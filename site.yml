@@ -1,0 +1,2 @@
+- import_playbook: recorders.yml
+- import_playbook: controllers.yml
