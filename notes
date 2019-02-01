@@ -1,0 +1,15 @@
+Setup client
+  Install openssh-server on client
+  Connect from controller with ssh and accept key
+  ping with password login
+    ansible xubuntu -i ~/www/lfnw/nuc-setup/hosts -m ping --ask-pass
+  Run bootstrap playbook with login and sudo
+    ansible-playbook bootstrap.yml -i ~/www/lfnw/nuc-setup/hosts --ask-pass --extra-vars "target=xubuntu" --become --ask-become-pass
+    OR
+    ansible-playbook bootstrap.yml -i ~/www/lfnw/nuc-setup/hosts --ask-pass -u johnb --extra-vars "target=xubuntu" --become --extra-vars 'ansible_become_pass=testpass'
+
+
+Role path example
+- copy:
+    src: "{{ role_path }}/files/foo.conf"
+    dest: /etc/foo.conf
