@@ -40,3 +40,10 @@
     special_time: reboot
     user: lfnwvideo
     job: "/home/lfnwvideo/bin/run-vncserver.sh"
+
+- name: Allow VNC connections in firewall
+  ufw:
+    rule: allow
+    port: 5901
+    proto: tcp
+    comment: "VNC remote desktop"
