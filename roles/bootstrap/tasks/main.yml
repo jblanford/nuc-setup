@@ -4,3 +4,9 @@
     name: ansible
     state: present
     update_cache: yes
+
+- name: Set authorized key for lfnwvideo user
+  authorized_key:
+    user: lfnwvideo
+    state: present
+    key: "{{ lookup('file', '../files/id_lfnwvideo.pub') }}"
