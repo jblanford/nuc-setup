@@ -1,2 +1,42 @@
 ---
 # tasks file for vnc-server
+- name: installing tigervnc
+  apt:
+    name: tigervnc-standalone-server
+    state: present
+
+- name: Crate .vnc directoy for lfnwvideo user
+  file:
+    path: "/home/lfnwvideo/.vnc/"
+    owner: "lfnwvideo"
+    group: "lfnwvideo"
+    state: directory
+
+- name: Copy vnc config files to .vnc
+  copy:
+    src: "{{ item }}"
+    dest: "/home/lfnwvideo/.vnc/"
+    owner: "lfnwvideo"
+    group: "lfnwvideo"
+    mode: 0600
+  with_fileglob:
+    - "{{ role_path }}/files/dot-vnc/*"
+
+- name: Make xstartup executable
+  file:
+    path: "/home/lfnwvideo/.vnc/xstartup"
+    mode: 0755
+
+- name: Copy vnc startup script
+  copy:
+    src: "{{ role_path }}/files/bin/run-vncserver.sh"
+    dest: "/home/lfnwvideo/bin/"
+    owner: "lfnwvideo"
+    group: "lfnwvideo"
+    mode: 0700
+
+- name: Setup crontab to run vnc server at boot
+  cron:
+    special_time: reboot
+    user: lfnwvideo
+    job: "/home/lfnwvideo/bin/run-vncserver.sh"

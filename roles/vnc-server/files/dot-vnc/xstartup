@@ -1,0 +1,8 @@
+#!/bin/sh
+#export XKL_XMODMAP_DISABLE=1
+#exec startxfce4
+
+unset SESSION_MANAGER
+unset DBUS_SESSION_BUS_ADDRESS
+vncconfig -nowin &
+startxfce4 &

@@ -1,5 +1,4 @@
 - hosts: recorders
   roles:
     - common
-    - obs
     - vnc-server
