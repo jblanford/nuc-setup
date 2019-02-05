@@ -1,2 +1,11 @@
 ---
 # tasks file for common
+- name: installing fail2ban
+  apt:
+    name: fail2ban
+    state: present
+
+- name: installing mediainfo
+  apt:
+    name: mediainfo
+    state: present
