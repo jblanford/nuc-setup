@@ -1,9 +1,13 @@
 ---
+- name: Update all packages to the latest version
+  apt:
+    upgrade: dist
+    update_cache: yes
+
 - name: installing Ansible
   apt:
     name: ansible
     state: present
-    update_cache: yes
 
 - name: Set authorized key for lfnwvideo user
   authorized_key:
