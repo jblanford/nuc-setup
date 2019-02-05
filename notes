@@ -3,10 +3,14 @@ Setup client
   Connect from controller with ssh and accept key
   ping with password login
     ansible xubuntu -i ~/www/lfnw/nuc-setup/hosts -m ping --ask-pass
+  ping using ssh key
+    ansible xubuntu -i ~/www/lfnw/nuc-setup/hosts -m ping -u lfnwvideo --private-key=/home/johnb/.ssh/id_lfnwvideo
   Run bootstrap playbook with login and sudo
     ansible-playbook bootstrap.yml -i ~/www/lfnw/nuc-setup/hosts --ask-pass --extra-vars "target=xubuntu" --become --ask-become-pass
     OR
-    ansible-playbook bootstrap.yml -i ~/www/lfnw/nuc-setup/hosts --ask-pass -u johnb --extra-vars "target=xubuntu" --become --extra-vars 'ansible_become_pass=testpass'
+    ansible-playbook bootstrap.yml -i ~/www/lfnw/nuc-setup/hosts --ask-pass -u lfnwvideo --extra-vars "target=xubuntu" --become --extra-vars 'ansible_become_pass=video2018'
+  Run a playbook with ssh key login
+  ansible-playbook <playbook>.yml -i ~/www/lfnw/nuc-setup/hosts -u lfnwvideo --private-key=~/.ssh/id_lfnwvideo --become --extra-vars 'ansible_become_pass=video2018'
 
 
 Role path example
