@@ -1,2 +1,17 @@
 ---
 # tasks file for obs
+
+- name: installing ffmpeg
+  apt:
+    name: ffmpeg
+    state: present
+
+- name: Add obs repo to system
+  apt_repository:
+    repo: ppa:obsproject/obs-studio
+
+- name: installing Obs Studio
+  apt:
+    name: obs-studio
+    state: present
+    update_cache: yes
