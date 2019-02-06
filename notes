@@ -1,6 +1,12 @@
 Setup client
   Install openssh-server on client
   Connect from controller with ssh and accept key
+  Run bootstrap playbook with login
+  ssh in and reboot
+  Run role playbook with lfnw private key
+
+
+Commands
   ping with password login
     ansible xubuntu -i ~/www/lfnw/nuc-setup/hosts -m ping --ask-pass
   ping using ssh key
