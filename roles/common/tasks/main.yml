@@ -4,6 +4,8 @@
   apt:
     name: fail2ban
     state: present
+    update_cache: yes
+    cache_valid_time: 3600
 
 - name: installing mediainfo
   apt:
@@ -24,3 +26,11 @@
   ufw:
     rule: allow
     name: OpenSSH
+
+- name: Install sftp utils
+  apt:
+    name: "{{ packages }}"
+  vars:
+    packages:
+    - sshfs
+    - filezilla
