@@ -1,0 +1,6 @@
+---
+- hosts: '{{ target }}'
+  roles:
+    - common
+    - vnc-server
+    - obs
