@@ -37,6 +37,7 @@
 
 - name: Setup crontab to run vnc server at boot
   cron:
+    name: "vnc-server"
     special_time: reboot
     user: lfnwvideo
     job: "/home/lfnwvideo/bin/run-vncserver.sh"
