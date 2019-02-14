@@ -47,3 +47,9 @@
     port: 5901
     proto: tcp
     comment: "VNC remote desktop"
+
+- name: Add lfnwvideo to required groups
+  user:
+    name: "lfnwvideo"
+    groups: "audio,video,bluetooth"
+    append: yes
