@@ -40,7 +40,7 @@
     name: "vnc-server"
     special_time: reboot
     user: lfnwvideo
-    job: "/home/lfnwvideo/bin/run-vncserver.sh"
+    job: "sleep 10;/home/lfnwvideo/bin/run-vncserver.sh"
 
 - name: Allow VNC connections in firewall
   ufw:
