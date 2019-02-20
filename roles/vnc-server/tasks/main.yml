@@ -12,20 +12,27 @@
     group: "lfnwvideo"
     state: directory
 
+# NB: we are not using the passwd file, but tigervnc complains if is missing
 - name: Copy vnc config files to .vnc
   copy:
-    src: "{{ item }}"
+    src: "{{ role_path }}/files/dot-vnc/{{ item }}"
     dest: "/home/lfnwvideo/.vnc/"
     owner: "lfnwvideo"
     group: "lfnwvideo"
     mode: 0600
-  with_fileglob:
-    - "{{ role_path }}/files/dot-vnc/*"
+  with_items:
+     - passwd
+     - vnc.conf
 
-- name: Make xstartup executable
-  file:
-    path: "/home/lfnwvideo/.vnc/xstartup"
+- name: Copy X startup file to .vnc
+  copy:
+    src: "{{ role_path }}/files/dot-vnc/{{ item }}"
+    dest: "/home/lfnwvideo/.vnc/"
+    owner: "lfnwvideo"
+    group: "lfnwvideo"
     mode: 0755
+  with_items:
+     - xstartup
 
 - name: Copy vnc startup script
   copy:
