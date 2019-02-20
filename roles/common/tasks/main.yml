@@ -35,15 +35,6 @@
     - sshfs
     - filezilla
 
-- name: Copy xfce terminal config
-  copy:
-    src: "{{ role_path }}/files/terminalrc"
-    dest: "/home/lfnwvideo/.config/xfce4/terminal/terminalrc"
-    owner: "lfnwvideo"
-    group: "lfnwvideo"
-    mode: 0664
-    force: no
-
 - name: Add IP address of all hosts to all hosts
   lineinfile:
     dest: /etc/hosts
