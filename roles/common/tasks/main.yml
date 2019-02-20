@@ -43,3 +43,13 @@
     group: "lfnwvideo"
     mode: 0664
     force: no
+
+- name: Add IP address of all hosts to all hosts
+  lineinfile:
+    dest: /etc/hosts
+    regexp: '.*{{ item }}$'
+    line: "{{ hostvars[item].ansible_host }} {{item}}"
+    state: present
+    backup: no
+  when: hostvars[item].ansible_host is defined
+  with_items: "{{ groups.all }}"
