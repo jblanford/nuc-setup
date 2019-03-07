@@ -1,0 +1,6 @@
+[recorders]
+#xubuntu ansible_host=10.0.0.221
+xubuntu2 ansible_host=10.0.0.218
+lfnw-nuc1 ansible_host=10.0.0.119
+lfnw-nuc2 ansible_host=10.0.0.168
+lfnw-nuc3 ansible_host=10.0.0.249
