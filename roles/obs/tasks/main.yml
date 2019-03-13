@@ -4,7 +4,7 @@
 - name: installing ffmpeg
   apt:
     name: ffmpeg
-    state: present
+    state: latest
 
 - name: Add obs repo to system
   apt_repository:
@@ -13,7 +13,7 @@
 - name: installing Obs Studio
   apt:
     name: obs-studio
-    state: present
+    state: latest
     update_cache: yes
 
 - name: Copy image sources to Pictures folder
