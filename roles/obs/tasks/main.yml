@@ -15,3 +15,23 @@
     name: obs-studio
     state: present
     update_cache: yes
+
+- name: Copy image sources to Pictures folder
+  copy:
+    src: "{{ item }}"
+    dest: "/home/lfnwvideo/Pictures"
+    owner: "lfnwvideo"
+    group: "lfnwvideo"
+    mode: 0644
+  with_fileglob:
+    - "{{ role_path }}/files/Pictures/*"
+
+- name: Copy profiles and scene collections
+  synchronize:
+    src: "{{ role_path }}/files/.config/obs-studio"
+    dest: /home/lfnwvideo/.config
+    archive: no
+    perms: yes
+    recursive: yes
+    delete: yes
+    rsync_path: "/usr/bin/rsync"
