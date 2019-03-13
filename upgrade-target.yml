@@ -1,0 +1,17 @@
+#
+# Run a dist-upgrade on an apt system
+#
+- hosts: '{{ target }}'
+  become: true
+  tasks:
+   - name: Upgrade all packages on system
+     apt:
+       update_cache: yes
+       upgrade: dist
+       autoremove: yes
+   - name: Check if a reboot is required
+     register: file
+     stat: path=/var/run/reboot-required get_md5=no
+   - name: Reboot the system
+     command: /sbin/reboot
+     when: file.stat.exists == true
