@@ -17,6 +17,8 @@ Commands
     ansible-playbook bootstrap.yml -i ~/www/lfnw/nuc-setup/hosts --ask-pass -u lfnwvideo --extra-vars "target=xubuntu" --become --extra-vars 'ansible_become_pass=video2018'
   Run a playbook with ssh key login
   ansible-playbook <playbook>.yml -i ~/www/lfnw/nuc-setup/hosts -u lfnwvideo --private-key=~/.ssh/id_lfnwvideo --become --extra-vars 'ansible_become_pass=video2018'
+  Update just one recorder system
+  ansible-playbook recorder-target.yml -i ~/www/lfnw/nuc-setup/hosts -u lfnwvideo --private-key=~/.ssh/id_lfnwvideo --become --extra-vars 'ansible_become_pass=video2018' --extra-vars "target=xubuntu2"
 
 
 Role path example
