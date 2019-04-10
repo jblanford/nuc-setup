@@ -1,2 +1,19 @@
 ---
 # tasks file for vnc-client
+
+- name: Install vnc clients
+  apt:
+    name: "{{ packages }}"
+  vars:
+    packages:
+    - tigervnc-viewer
+    - remmina
+
+- name: Create LFNW directory
+  file:
+    path: /home/lfnwvideo/LFNW/raw_videos
+    state: directory
+    owner: lfnwvideo
+    group: lfnwvideo
+    mode: 0755
+    recurse: yes

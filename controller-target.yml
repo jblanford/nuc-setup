@@ -1,4 +1,5 @@
-- hosts: controllers
+---
+- hosts: '{{ target }}'
   roles:
     - common
     - vnc-client
