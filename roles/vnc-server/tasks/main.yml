@@ -70,3 +70,19 @@
     group: "lfnwvideo"
     mode: 0664
     force: no
+
+- name: Copy virtgl deb to Downloads
+  copy:
+    src: "{{ item }}"
+    dest: /home/lfnwvideo/Downloads/
+    owner: "lfnwvideo"
+    group: "lfnwvideo"
+    mode: 0664
+    force: no
+  with_fileglob:
+    - "{{ role_path }}/files/virtgl/*"
+
+- name: Install virtgl package
+  apt:
+    deb:  /home/lfnwvideo/Downloads/virtualgl_2.6.1_amd64.deb
+    state: present
