@@ -8,3 +8,19 @@
     packages:
     - tigervnc-viewer
     - remmina
+
+- name: Create bin directory if it does not exist
+  file:
+    path: "/home/lfnwvideo/bin"
+    state: directory
+    owner: lfnwvideo
+    group: lfnwvideo
+    mode: 0775
+
+- name: Copy tigervnc-connect script
+  copy:
+    src: "{{ role_path }}/files/tigervnc-connect"
+    dest: "/home/lfnwvideo/bin/tigervnc-connect"
+    owner: "lfnwvideo"
+    group: "lfnwvideo"
+    mode: 0755

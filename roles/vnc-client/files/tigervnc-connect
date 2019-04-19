@@ -1,0 +1,7 @@
+#!/bin/bash
+if [ "$#" -ne 1 ]; then
+    echo "Usage: tigervnc-connect hostname"
+    exit 1
+fi
+
+xtigervncviewer "$1":1 >/dev/null 2>&1 &
