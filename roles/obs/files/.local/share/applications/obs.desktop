@@ -1,0 +1,11 @@
+[Desktop Entry]
+Version=1.1
+Type=Application
+Name=OBS Studio
+GenericName=Streaming/Recording Software
+Comment=Free and Open Source Streaming/Recording Software
+Icon=obs
+Exec=/usr/bin/vglrun /usr/bin/obs
+Actions=
+Categories=AudioVideo;Recorder;
+StartupNotify=true

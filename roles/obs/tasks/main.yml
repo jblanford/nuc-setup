@@ -26,6 +26,28 @@
   with_fileglob:
     - "{{ role_path }}/files/Pictures/*"
 
+- name: Create local config directories if they don't exist
+  file:
+    path: "/home/lfnwvideo/{{ item }}"
+    state: directory
+    owner: lfnwvideo
+    group: lfnwvideo
+    mode: 0775
+  with_items:
+     - .local/share/applications
+     - .gnome/apps
+
+- name: Copy obs desktop files that use virtgl
+  copy:
+    src: "{{ role_path }}/files/{{ item }}"
+    dest: "/home/lfnwvideo/{{ item }}"
+    owner: "lfnwvideo"
+    group: "lfnwvideo"
+    mode: 0664
+  with_items:
+     - .local/share/applications/obs.desktop
+     - .gnome/apps/obs.desktop
+
 - name: Copy profiles and scene collections
   synchronize:
     src: "{{ role_path }}/files/.config/obs-studio"
