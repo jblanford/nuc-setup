@@ -4,6 +4,8 @@ Setup client
   Run bootstrap playbook with login
   ssh in and reboot
   Run role playbook with lfnw private key
+  Login and run this command to set permissions for virtgl
+    sudo /opt/VirtualGL/bin/vglserver_config -config +s +f -t
 
 
 Commands
