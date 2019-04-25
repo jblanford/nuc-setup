@@ -44,3 +44,14 @@
     backup: no
   when: hostvars[item].ansible_host is defined
   with_items: "{{ groups.all }}"
+
+- name: Copy documentation files
+  copy:
+    src: "{{ item }}"
+    dest: /home/lfnwvideo/Documents/
+    owner: "lfnwvideo"
+    group: "lfnwvideo"
+    mode: 0664
+    force: no
+  with_fileglob:
+    - "{{ role_path }}/files/documents/*"
